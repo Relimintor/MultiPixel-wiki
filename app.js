@@ -1,21 +1,53 @@
 const wiki = document.getElementById("wiki");
+const nav = document.getElementById("nav");
+const searchInput = document.getElementById("search");
+
+let pages = [];
+
+async function init() {
+  const res = await fetch("pages.json");
+  pages = await res.json();
+
+  buildSidebar();
+  loadPage(location.hash.substring(1) || "home");
+}
+
+function buildSidebar(filter = "") {
+  nav.innerHTML = "";
+
+  pages
+    .filter(p => p.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(page => {
+      const link = document.createElement("a");
+      link.href = `#${page}`;
+      link.textContent = capitalize(page);
+      nav.appendChild(link);
+    });
+
+  highlightActive();
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 async function loadPage(page) {
   try {
     const res = await fetch(`pages/${page}.md`);
-    if (!res.ok) throw new Error("Page not found");
+    if (!res.ok) throw new Error();
 
     const text = await res.text();
     wiki.innerHTML = marked.parse(text);
 
-    interceptLinks();
+    interceptInternalLinks();
+    highlightActive();
   } catch {
     wiki.innerHTML = "<h1>404</h1><p>Page not found.</p>";
   }
 }
 
-function interceptLinks() {
-  document.querySelectorAll("a").forEach(link => {
+function interceptInternalLinks() {
+  document.querySelectorAll(".content a").forEach(link => {
     const href = link.getAttribute("href");
 
     if (!href.startsWith("http")) {
@@ -27,10 +59,20 @@ function interceptLinks() {
   });
 }
 
+function highlightActive() {
+  const current = location.hash.substring(1) || "home";
+
+  document.querySelectorAll("#nav a").forEach(link => {
+    link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+  });
+}
+
 window.addEventListener("hashchange", () => {
-  const page = location.hash.substring(1) || "home";
-  loadPage(page);
+  loadPage(location.hash.substring(1));
 });
 
-// First load
-loadPage(location.hash.substring(1) || "home");
+searchInput.addEventListener("input", (e) => {
+  buildSidebar(e.target.value);
+});
+
+init();

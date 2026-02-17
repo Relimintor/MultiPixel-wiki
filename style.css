@@ -11,16 +11,35 @@ body {
 
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Top Logo Header */
+.top-logo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.top-logo img {
+  height: 40px;
 }
 
 /* GLASS CONTAINER */
 .glass-container {
   position: relative;
   width: 95%;
-  height: 92vh;
+  height: 90vh;
   display: flex;
+  margin-top: 60px; /* push below top logo */
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -38,10 +57,10 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1001;
   transition: transform 0.2s ease;
 }
 
@@ -53,13 +72,11 @@ body {
 .sidebar {
   width: 260px;
   padding: 70px 20px 20px 20px;
-
   background: rgba(255,255,255,0.15);
   border-right: 1px solid rgba(255,255,255,0.2);
 
   display: flex;
   flex-direction: column;
-
   transition: transform 0.3s ease;
 }
 
@@ -139,5 +156,4 @@ body {
     height: 100%;
     z-index: 999;
   }
-
 }

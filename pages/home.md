@@ -11,3 +11,5 @@ Welcome to the MultiPixel Wiki.
 ## Our socials
 - [Our discord server](https://discord.gg/x6kkYB2HmE)
 - [our github](https://github.com/Relimintor/)
+- [our game](https://relimintor.github.io/MultiPixel/)
+

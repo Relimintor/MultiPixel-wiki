@@ -2,23 +2,28 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MultiPixel Wiki</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <div class="layout">
-      <aside class="sidebar">
-        <div class="logo">MultiPixel Wiki</div>
-        <input type="text" id="search" placeholder="Search...">
-        <nav id="nav"></nav>
-      </aside>
+  <div class="glass-container">
 
-      <main class="content">
-        <div id="wiki"></div>
-      </main>
-    </div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/sidebar.png" id="toggleBtn" class="toggle-btn">
+        <div class="logo">MultiPixel Wiki</div>
+      </div>
+
+      <input type="text" id="search" placeholder="Search...">
+      <nav id="nav"></nav>
+    </aside>
+
+    <main class="content" id="content">
+      <div id="wiki"></div>
+    </main>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

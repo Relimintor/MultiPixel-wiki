@@ -3,6 +3,6 @@ Well theres lots of changes in my game soooo here are them
 - [0.1.1 pre-classic](versions/pre-classic/0.1.1)
 - [0.1.2 pre-classic](versions/pre-classic/0.1.2)
 - [0.1.3 pre-classic](versions/pre-classic/0.1.3)
-- [0.1.3 pre-classic](versions/pre-classic/0.2.0)
+- [0.2.0 pre-classic](versions/pre-classic/0.2.0)
 
 
